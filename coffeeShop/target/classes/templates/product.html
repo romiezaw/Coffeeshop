@@ -1,40 +1,47 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="UTF-8"/>
-		<title>Add A Book</title>
-		<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
-	</head>
-	<body>
-		<h1>Create a product:</h1>
-		
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.13/css/all.css}"/>
+</head>
+<body>
+ <div class="container">
+      <div th:replace="fragments/menu :: menu"></div>
 		<form th:action="@{/product}" th:object="${product}" method="POST">
-
+			<div class="form-group">
 				Name:
-				<input type="text" th:field="*{productName}"/>
+				<input class="form-control" type="text" th:field="*{productName}"/>
 				<span th:errors="*{productName}"></span>
-				<br/>
+			</div>
+			<div class="form-group">
 				Description:
-				<input type="text" th:field="*{description}"/>
+				<input class="form-control" type="text" th:field="*{description}"/>
 				<span th:errors="*{description}"></span>
-				<br/>
+			</div>
+			<div class="form-group">
 				Type:
-				<input type="text" th:field="*{price}"/>
+				<input class="form-control" type="text" th:field="*{price}"/>
 				<span th:errors="*{price}"></span>
-				<br/>
+			</div>
+			<div class="form-group">
 				Product Type:
-				<select th:field="*{productType}" id="productType">
+				<select class="form-control" th:field="*{productType}" id="productType">
                     <option th:each="productType : ${productTypes}" th:text="${productType}" th:value="${productType}"></option>
                 </select>
                 <span th:errors="*{productType}"></span>
-				<br/>
-				<input type="submit" value="Create"/>
-		
+			</div>
+			<br/>
+			<input type="submit" value="Create" class="btn btn-default"/>
 			</form>
 			<br/>
 		
-		
-		<div th:if="${errorMessage}" th:utext="${errorMessage}"
-			style="color:red;font-style:italic">...</div>
-	</body>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+     
+<div th:if="${errorMessage}" th:utext="${errorMessage}"
+	style="color:red;font-style:italic">...</div>
+	
+</body>
 </html>

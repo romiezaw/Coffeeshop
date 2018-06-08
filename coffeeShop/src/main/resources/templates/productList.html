@@ -2,28 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org">
    <head>
       <meta charset="UTF-8" />
-      <title>Person List</title>
+      <title>Product List</title>
       <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+      <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" />
+	  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.13/css/all.css}"/>
    </head>
    <body>
-      <h1>Product List</h1>
-      <a href="product">Add a Product</a>
+      
+      <div class="container">
+      <div th:replace="fragments/menu :: menu"></div>
+	  
+      <a th:href="@{/product}" class="btn btn-default"><i class="fa fa-plus"></i> Add a Product</a>
       <br/><br/>
-      <div>
-         <table border="1">
+         <table class="table">
             <tr>
                <th>Product Name</th>
                <th>Description</th>
                <th>Price</th>
                <th>Product Type</th>
+               <th>Action</th>
             </tr>
             <tr th:each ="product : ${productList}">
                <td th:text="${product.productName}">...</td>
                <td th:text="${product.description}">...</td>
                <td th:text="${product.price}">...</td>
                <td th:text="${product.productType}">...</td>
+               <td>
+               		<a th:href="@{/product}"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+               		<a th:href="@{/products}"><i class="fa fa-trash"></i></a>
+               </td>
             </tr>
          </table>
       </div>
+       <div th:replace="fragments/footer :: footer"></div>
    </body>
 </html>
