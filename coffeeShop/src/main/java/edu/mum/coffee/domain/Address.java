@@ -1,18 +1,26 @@
 package edu.mum.coffee.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "ADDRESS")
 public class Address {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "ID")
 	private int id;
+	
+	@Column(name = "CITY")
 	private String city;
+	
+	@Column(name = "STATE")
 	private String state;
+	
+	@Column(name = "COUNTRY")
 	private String country;
+	
+	@Column(name = "ZIPCODE")
 	private String zipcode;
 
 	public String getCity() {

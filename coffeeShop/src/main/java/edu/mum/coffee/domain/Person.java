@@ -1,26 +1,37 @@
 package edu.mum.coffee.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "PERSON")
 public class Person {
 	@Id
 	@GeneratedValue
+	@Column(name="ID")
 	private long id;
+	
+	@Column(name="FIRST_NAME")
 	private String firstName;
+	
+	@Column(name="LAST_NAME")
 	private String lastName;
+	
+	@Column(name = "EMAIL", unique = true)
 	private String email;
+	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ADDRESS_ID")
 	private Address address;
+	
+	@Column(name = "PHONE")
 	private String phone;
+	
+	@Column(name = "ENABLE")
 	private boolean enable;
+	
+	@Transient
+	private String password;
 
 	public long getId() {
 		return id;
@@ -74,4 +85,14 @@ public class Person {
 		this.phone = phone;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	
+	
 }

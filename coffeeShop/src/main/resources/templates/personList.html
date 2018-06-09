@@ -36,9 +36,9 @@
             <td th:text="${person.address.state}"></td>
             <td th:text="${person.address.zipcode}"></td>
             <td>
-            	<a th:href="@{/person}"><i class="fa fa-edit"></i></a>
+            	<a th:href="@{'/person/' + ${person.id}}"><i class="fa fa-edit"></i></a>
             	&nbsp;&nbsp;
-            	<a th:href="@{/person}"><i class="fa fa-trash"></i></a>
+            	<a th:href="@{'/person/delete/'+ ${person.id}}"><i class="fa fa-trash"></i></a>
             </td>
         </tr>
         </tbody>

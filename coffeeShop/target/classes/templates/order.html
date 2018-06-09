@@ -15,25 +15,25 @@
 		<form th:action="@{/placeOrder}" th:object="${order}" method="POST">
 		
 		<div class="form-group">
-			Order Date: <input type="text" th:field="*{orderDate}" /> 
+			Order Date: <input class="form-control" type="text" th:field="*{orderDate}" /> 
 		</div>
 		<span th:errors="*{orderDate}"></span> <br/>
 		
-		<div class="form-group">
-			Quantity:
-			<div th:each="orderLine : *{orderLines}">
-				<input type="text" th:field="*{orderLine.quantity}"/>
-			</div>
+<!-- 		<div class="form-group"> -->
+<!-- 			Quantity: -->
+<!-- 			<div th:each="orderLine : *{orderLines}"> -->
+<!-- 				<input class="form-control" type="text" th:field="*{orderLine.quantity}"/> -->
+<!-- 			</div> -->
 <!-- 		<span th:errors="*{orderLine.quantity}"></span> <br/> -->
-		</div>
+<!-- 		</div> -->
 		
-		<div class="form-group">
-			Product: 
-			<div th:each="orderLine : *{orderLines}">
-				<input type="text" th:field="*{orderLine.product}"/>
-			</div>
+<!-- 		<div class="form-group"> -->
+<!-- 			Product:  -->
+<!-- 			<div th:each="orderLine : *{orderLines}"> -->
+<!-- 				<input class="form-control" type="text" th:field="*{orderLine.product}"/> -->
+<!-- 			</div> -->
 <!-- 		<span th:errors="*{orderLines.orderLine.quantity}"></span> <br/> -->
-		</div>
+<!-- 		</div> -->
 		
 <!-- 		<div class="form-group"> -->
 <!-- 			Quantity: <input type="text" th:field="*{orderLines.orderLine.quantity}" />  -->
@@ -41,7 +41,7 @@
 <!-- 		</div> -->
 		
 		<div class="form-group">
-		 	Type: <input type="text" th:field="*{person}" /> 
+		 	Type: <input class="form-control" type="text" th:field="*{person}" /> 
 		 	<span th:errors="*{person}"></span> <br/>
 		</div> 
 		<br/>

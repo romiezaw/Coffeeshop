@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import edu.mum.coffee.domain.Person;
+import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.service.OrderService;
 import edu.mum.coffee.service.PersonService;
 
@@ -27,22 +28,28 @@ public class PersonController {
 		return "person";
 	}
 
-	@GetMapping("/person/{personId}")
-	public String personDetail(@PathVariable("personId") Long personId, Model model) {
-		model.addAttribute("person", personService.findById(personId));
-		return "person";
-	}
-
 	@PostMapping("/person")
 	public String createPerson(@ModelAttribute("person") Person person) {
 		personService.savePerson(person);
 		return "redirect:/persons";
 	}
-	
 
 	@GetMapping("/persons")
 	public String personList(Model model) {
 		model.addAttribute("persons", personService.findAll());
 		return "personList";
+	}
+	
+	@GetMapping("/person/delete/{personId}")
+	public String deletePerson(Person person, @PathVariable("personId") long personId) {
+		Person personToDelete = personService.findById(personId);
+		personService.removePerson(personToDelete);
+		return "redirect:/persons";
+	}
+	
+	@GetMapping("/person/{personId}")
+	public String updatePerson(@PathVariable("personId") Long personId, Model model) {
+		model.addAttribute("person", personService.findById(personId));
+		return "person";
 	}
 }

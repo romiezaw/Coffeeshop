@@ -28,8 +28,8 @@
                <td th:text="${product.price}">...</td>
                <td th:text="${product.productType}">...</td>
                <td>
-               		<a th:href="@{/product}"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-               		<a th:href="@{/products}"><i class="fa fa-trash"></i></a>
+               		<a th:href="@{'/product/'+${product.id}}"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+               		<a th:href="@{'/delete/'+${product.id}}"><i class="fa fa-trash"></i></a>
                </td>
             </tr>
          </table>

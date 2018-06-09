@@ -11,7 +11,6 @@
 	<div class="container">
 	<div th:replace="fragments/menu :: menu"></div>
 		<form th:object="${person}" th:action="@{/person}" method="post">
-			<input type="hidden" name="id" th:field="*{id}" />
 			<div class="form-group">
 				First Name:
 				<input th:field="*{firstName}" type="text" class="form-control"
@@ -53,7 +52,9 @@
 						class="form-control" id="zipcode"/>
 			</div>
 			<br/>
-			<input type="submit" class="btn btn-primary" />
+			<input type="hidden" th:field="*{id}" />
+			 <input type="submit" class="btn btn-default" value="Create" th:if="*{id} == 0"/>
+		     <input type="submit" class="btn btn-default" value="Update" th:if="*{id} != 0"/>
 		</form>
 		<br/>
 	</div>
