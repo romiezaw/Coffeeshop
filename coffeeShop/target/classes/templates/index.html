@@ -33,6 +33,10 @@
     <div th:replace="fragments/footer :: footer"></div>
 	<div th:if="${errorMessage}" th:utext="${errorMessage}"
 		style="color:red;font-style:italic">...</div>
-		
+	
+	<script>
+		$('.active').removeClass('active');
+		$('#home').addClass('active');
+	</script>
 </body>
 </html>
