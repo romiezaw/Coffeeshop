@@ -14,7 +14,7 @@
 <body>
 <div class="container">
 	<div th:replace="fragments/menu :: menu"></div>
-        <div class="col-lg-3 col-md-6 mb-4" style="width:23%" th:each="product, iter : ${products}">
+        <div class="col-lg-3 col-md-6 mb-4" style="width:23%;height:500px" th:each="product, iter : ${products}">
             <div class="card">
                 <img style="width:200px;height:200px"  th:src="@{${'/images/blend' + (iter.index % 5) + '.jpg'}}" alt=""/>
                 <div class="card-body">
