@@ -53,13 +53,16 @@ public class HomeController {
 		double total = 0;
 		if (orderCartObj != null) {
 			 Order order = (Order) orderCartObj;
-			model.addAttribute("order", order);
-			for (Orderline orderline : order.getOrderLines()) {
+			 
+			 System.out.println("In shopping cart : order = " + order);
+			 model.addAttribute("order", order);
+			 for (Orderline orderline : order.getOrderLines()) {
 				total += orderline.getSubtotal();
-			}
+			 }
 		}
 		model.addAttribute("total", total);
-
+		System.out.println("total : " + total);
+		
 		return "shoppingCart";
 	}
 }

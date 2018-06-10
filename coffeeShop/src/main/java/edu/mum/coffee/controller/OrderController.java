@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import edu.mum.coffee.adapters.UserAdapter;
 import edu.mum.coffee.domain.Order;
 import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.service.OrderService;
@@ -50,26 +51,5 @@ public class OrderController {
 		orderService.save(order);
 		return "orderList";
 	}
-	
-	@PostMapping("/placeOrder")
-	public String createOrder(HttpSession session, Authentication authentication , @ModelAttribute Person person) {
-		Object orderObj = session.getAttribute("orderCart");
-		if (orderObj == null) {
-			orderObj = new Order();
-			session.setAttribute("orderCart", orderObj);
-		}
-		Order order = (Order) orderObj;
-		order.setOrderDate(new Date());
-
-		//UserAdapter userAdapter = (UserAdapter) authentication.getPrincipal();
-		List<Person> persons = personService.findByEmail("ymzaw@mum.edu");
-				//findByEmail(userAdapter.getUser().getEmail());
-		order.setPerson(persons.get(0));
-		orderService.save(order);
-
-		session.removeAttribute("orderCart");
-		return "redirect:/";
-	}
-
 	
 }

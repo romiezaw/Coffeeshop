@@ -1,24 +1,37 @@
 package edu.mum.coffee.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "Orderline")
+@Table(name = "ORDER_LINE")
 public class Orderline {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "ID")
 	private int id;
+	
+	@Column(name="QUANTITY")
 	private int quantity;
+	
 	@OneToOne
+	@JoinColumn(name = "PRODUCT_ID")
 	private Product product;
+	
 	@ManyToOne
+	@JoinColumn(name = "ORDER_ID")
 	private Order order;
+	
+	@Transient
+	private double subTotal;
 
 	public int getQuantity() {
 		return quantity;
@@ -52,4 +65,13 @@ public class Orderline {
 		return product.getPrice();
 	}
 
+	public double getSubTotal() {
+		return product.getPrice() * quantity;
+	}
+
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	
 }
