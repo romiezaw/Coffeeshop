@@ -52,4 +52,31 @@ public class OrderController {
 		return "orderList";
 	}
 	
+	@PostMapping("/placeOrder")
+	public String createOrder(HttpSession session, Authentication authentication , @ModelAttribute Person person) {
+		System.out.println("In place order.....");
+		Object orderObj = session.getAttribute("orderCart");
+		if (orderObj == null) {
+			orderObj = new Order();
+			session.setAttribute("orderCart", orderObj);
+			System.out.println("...orderCart.." + orderObj);
+		}
+		Order order = (Order) orderObj;
+		order.setOrderDate(new Date());
+		System.out.println("order : " + order);
+
+		System.out.println("... auth .." + authentication.getPrincipal());
+		
+		UserAdapter userAdapter = (UserAdapter) authentication.getPrincipal();
+		List<Person> persons = personService.findByEmail(userAdapter.getUser().getEmail());
+				//findByEmail("ymzaw@mum.edu");
+				
+		order.setPerson(persons.get(0));
+		orderService.save(order);
+
+		session.removeAttribute("orderCart");
+		
+		return "success";
+	}
+	
 }

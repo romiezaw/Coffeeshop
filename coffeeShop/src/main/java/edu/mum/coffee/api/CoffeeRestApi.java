@@ -34,17 +34,11 @@ public class CoffeeRestApi {
 	private ProductService productService;
 	
 	@Autowired
-	private PersonService personService;
-	
-	@Autowired
 	private OrderService orderService;
 
-	@RequestMapping(value = "/product/{productId}", method = RequestMethod.DELETE)
-	@ResponseStatus(HttpStatus.OK)
-	public void deleteProduct(@PathVariable("productId") int productId) {
-		productService.delete(productService.getProduct(productId));
-	}
-
+	@Autowired
+	private PersonService personService;
+	
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
 	public List<Product> getAllProduct() {
 		List<Product> products = productService.getAllProduct();
@@ -78,6 +72,12 @@ public class CoffeeRestApi {
 			order.addOrderLine(orderline);
 		}
 	}
+
+	@RequestMapping(value = "/product/{productId}", method = RequestMethod.DELETE)
+	@ResponseStatus(HttpStatus.OK)
+	public void deleteProduct(@PathVariable("productId") int productId) {
+		productService.delete(productService.getProduct(productId));
+	}
 	
 	@PostMapping("/placeOrder")
 	public String createOrder(HttpSession session, Authentication authentication , @ModelAttribute Person person) {
@@ -102,8 +102,7 @@ public class CoffeeRestApi {
 
 		session.removeAttribute("orderCart");
 		
-		return "redirect:/";
+		return "success";
 	}
-
 	
 }

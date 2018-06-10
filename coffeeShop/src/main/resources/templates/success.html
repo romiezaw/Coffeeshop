@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Coffee Menu</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+<link rel="stylesheet"
+	th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" />
+<link rel="stylesheet"
+	th:href="@{https://use.fontawesome.com/releases/v5.0.13/css/all.css}" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script th:src="@{/js/main.js}" src="../../js/main.js"
+	type="text/javascript"></script>
+</head>
+<body>
+	<div class="container">
+		<div th:replace="fragments/menu :: menu"></div>
+
+		<div class="alert alert-success">
+			<strong>Your order is successful!</strong>
+		</div>
+
+	</div>
+	<br />
+	<div th:replace="fragments/footer :: footer"></div>
+	<div th:if="${errorMessage}" th:utext="${errorMessage}"
+		style="color: red; font-style: italic">...</div>
+
+	<script>
+		$('.active').removeClass('active');
+		$('#shopping-cart').addClass('active');
+	</script>
+</body>
+</html>

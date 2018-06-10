@@ -35,14 +35,6 @@ public class ProductController {
 		return "redirect:/products";
 	}
 	
-//	@PostMapping("/product/{id}")
-//	public String update(@PathVariable("id") int productId, @ModelAttribute Product product) {
-//		System.out.println("In post product");
-//		Product productToUpdate = productService.getProduct(productId);
-//		productService.save(productToUpdate);
-//		return "redirect:/products";
-//	}
-	
 	@GetMapping("/products")
 	public String productList(Model model) {
 		List<Product> products = productService.getAllProduct();

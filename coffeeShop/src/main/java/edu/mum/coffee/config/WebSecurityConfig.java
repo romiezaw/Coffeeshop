@@ -42,10 +42,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 
-		http.authorizeRequests().antMatchers("/products/**",
-				"/product/**", "/person/**", "/persons/**", "/orders/**")
-			//.hasRole("ADMIN")
-			.permitAll()
+		http.authorizeRequests()
+		.antMatchers("/products/**", "/product/**", "/orders/**")
+		.hasRole("ADMIN")
+		.antMatchers("/persons/**")
+		.hasRole("CUSTOMER")
+			//.permitAll()
 			.and().httpBasic()
 			.realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
 
