@@ -30,9 +30,18 @@ public class ProductController {
 	
 	@PostMapping("/product")
 	public String createProduct(@ModelAttribute Product product) {
+		System.out.println("In post product--->" + product);
 		productService.save(product);
 		return "redirect:/products";
 	}
+	
+//	@PostMapping("/product/{id}")
+//	public String update(@PathVariable("id") int productId, @ModelAttribute Product product) {
+//		System.out.println("In post product");
+//		Product productToUpdate = productService.getProduct(productId);
+//		productService.save(productToUpdate);
+//		return "redirect:/products";
+//	}
 	
 	@GetMapping("/products")
 	public String productList(Model model) {
@@ -48,10 +57,12 @@ public class ProductController {
 		return "redirect:/products";
 	}
 	
-	@GetMapping("/product/{productId}")
-	public String updateProduct(@PathVariable("productId") int productId, Model model) {
+	@GetMapping("/product/{id}")
+	public String updateProduct(@PathVariable("id") int productId, Model model) {
+		System.out.println("In get product");
 		model.addAttribute("product", productService.getProduct(productId));
 		model.addAttribute("productTypes", ProductType.values());
 		return "product";
 	}
+	
 }

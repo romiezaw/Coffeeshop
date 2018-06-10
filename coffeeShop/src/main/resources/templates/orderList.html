@@ -14,20 +14,19 @@
 				<tr>
 					<th scope="col">Customer</th>
 					<th scope="col">Order placed</th>
-					<th scope="col">Total</th>
-					<th scope="col">Order Status</th>
+					<th scope="col">Product Name</th>
+					<th scope="col">Product Description</th>
+					<th scope="col">Quantity</th>
+					<th scope="col">Total Amount</th>
 				</tr>
 				<tbody th:each="order : ${orders}">
-					<tr>
+					<tr th:each="orderLine : ${order.orderLines}">
 						<td th:text="${order.person.firstName}"></td>
 						<td th:text="${order.orderDate}"></td>
-						<td th:text="${order.totalAmount}"></td>
-					</tr>
-					<tr th:each="orderLine : ${order.orderLines}">
 						<td th:text="${orderLine.product.productName}"></td>
 						<td th:text="${orderLine.product.description}"></td>
-						<td>Price: $ <strong th:text="${orderLine.product.price}"></strong></td>
-						<td>Quantity: <strong th:text="${orderLine.quantity}"></strong></td>
+						<td><strong th:text="${orderLine.quantity}"></strong></td>
+						<td>$ <strong th:text="${orderLine.product.price}"></strong></td>
 					</tr>
 				</tbody>
 			</table>

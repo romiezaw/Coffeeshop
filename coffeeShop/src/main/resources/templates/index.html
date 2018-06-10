@@ -4,7 +4,7 @@
       layout:decorate="layout/layout">
 <head>
 <meta charset="UTF-8" />
-<title>Person List</title>
+<title>Coffee Menu</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
 <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" />
 <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.13/css/all.css}"/>
@@ -14,9 +14,9 @@
 <body>
 <div class="container">
 	<div th:replace="fragments/menu :: menu"></div>
-        <div class="col-lg-3 col-md-6 mb-4" th:each="product, iter : ${products}">
+        <div class="col-lg-3 col-md-6 mb-4" style="width:23%" th:each="product, iter : ${products}">
             <div class="card">
-                <img style="width:200px" th:src="@{${'/images/blend' + (iter.index % 4) + '.jpg'}}" alt=""/>
+                <img style="width:200px;height:200px"  th:src="@{${'/images/blend' + (iter.index % 5) + '.jpg'}}" alt=""/>
                 <div class="card-body">
                     <h4 class="card-title" th:text="${product.productName}">Card title</h4>
                     <p class="card-text" th:text="${product.description}">Coffee </p>
