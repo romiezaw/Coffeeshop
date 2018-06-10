@@ -50,7 +50,7 @@
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total <p th:text="${total}">$1.99</p></strong></td>
             <td>
-                <form th:action="@{/placeOrder}" method="POST" th:object="${order}" id="placeOrder-btn">
+                <form th:action="@{/placeOrder}" method="POST" id="placeOrder-btn">
                     <button th:if="${not #lists.isEmpty(order.orderLines)}" class="btn btn-default btn-block">Place Order <i class="fa fa-angle-right"></i></button>
                 </form>
             </td>

@@ -5,7 +5,7 @@ $(function() {
         var self = $(this);
         console.log( self.attr("productId"));
         $.ajax({
-            url: "/cart",
+            url: "api/cart",
             type: "POST",
             data: self.attr("productId"),
             contentType: "application/json; charset=utf-8",

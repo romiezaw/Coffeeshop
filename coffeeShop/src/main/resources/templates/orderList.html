@@ -9,9 +9,7 @@
 <body>
 	<div class="container">
 		<div th:replace="fragments/menu :: menu"></div>
-		<a th:href="@{/order}" class="btn btn-default"><i class="ta ta-plus">Create an Order</i></a> <br />
 		<br />
-		<div th:each="order : ${orders}">
 			<table class="table">
 				<tr>
 					<th scope="col">Customer</th>
@@ -19,14 +17,14 @@
 					<th scope="col">Total</th>
 					<th scope="col">Order Status</th>
 				</tr>
-				<tbody>
+				<tbody th:each="order : ${orders}">
 					<tr>
 						<td th:text="${order.person.firstName}"></td>
 						<td th:text="${order.orderDate}"></td>
 						<td th:text="${order.totalAmount}"></td>
 					</tr>
-					<tr th:each="orderLine, ${order.orderLines}">
-						<td th:text="${orderLine.product.name}"></td>
+					<tr th:each="orderLine : ${order.orderLines}">
+						<td th:text="${orderLine.product.productName}"></td>
 						<td th:text="${orderLine.product.description}"></td>
 						<td>Price: $ <strong th:text="${orderLine.product.price}"></strong></td>
 						<td>Quantity: <strong th:text="${orderLine.quantity}"></strong></td>
@@ -34,6 +32,5 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
 </body>
 </html>

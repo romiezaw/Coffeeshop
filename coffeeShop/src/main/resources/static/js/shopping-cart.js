@@ -4,7 +4,7 @@ $(function() {
     	console.log("in shopping cart..");
         $.ajax({
             type: "POST",
-            url: "/placeOrder",
+            url: "api/placeOrder",
             contentType: "application/json; charset=utf-8",
             success: function() {
             }
