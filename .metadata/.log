@@ -2013,3 +2013,48 @@ Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/romiez
 
 !ENTRY org.eclipse.egit.ui 4 0 2018-06-10 18:32:45.675
 !MESSAGE Can't connect to any repository: https://github.com/romiezaw/Coffeeshop (https://github.com/romiezaw/Coffeeshop: not authorized)
+!SESSION 2018-06-11 10:10:28.486 -----------------------------------------------
+eclipse.buildId=3.9.3.201803200915-RELEASE-e47
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_SG
+Framework arguments:  -product org.springsource.sts.ide -keyring /Users/romiezaw/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.springsource.sts.ide -keyring /Users/romiezaw/.eclipse_keyring
+
+!ENTRY org.eclipse.ui 2 0 2018-06-11 10:10:43.985
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2018-06-11 10:10:43.985
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.lsp4e', id='org.eclipse.lsp4e.togglehighlight'
+
+!ENTRY org.eclipse.core.net 1 0 2018-06-11 10:10:44.547
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.jface 2 0 2018-06-11 10:10:48.647
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-06-11 10:10:48.647
+!MESSAGE A conflict occurred for COMMAND+SHIFT+T:
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@ce5a2ea,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(COMMAND+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@37a0c3c6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-06-11 10:10:55.048
+!MESSAGE 
+
+!ENTRY org.eclipse.jface.text 2 0 2018-06-11 10:41:27.052
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-06-11 10:41:27.053
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,25 @@ public class CoffeeRestApi {
 		List<Product> products = productService.getAllProduct();
 		return products;
 	}
+
+	@RequestMapping(value = "/product/{productId}", method = RequestMethod.DELETE)
+	@ResponseStatus(HttpStatus.OK)
+	public void deleteProduct(@PathVariable("productId") int productId) {
+		productService.delete(productService.getProduct(productId));
+	}
+	
+	@RequestMapping(value="/product/{productId}" , method= RequestMethod.GET)
+	public Product getProductById(@PathVariable("productId") int productId) {
+		System.out.println("In getting product");
+		return productService.getProduct(productId);
+	}
+	
+	@PostMapping(value="/product/create")
+	@CrossOrigin
+	@ResponseStatus(HttpStatus.OK)
+	public void createProduct(@RequestBody Product product) {
+		productService.save(product);
+	}
 	
 	@RequestMapping(value = "/cart", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
@@ -73,11 +93,6 @@ public class CoffeeRestApi {
 		}
 	}
 
-	@RequestMapping(value = "/product/{productId}", method = RequestMethod.DELETE)
-	@ResponseStatus(HttpStatus.OK)
-	public void deleteProduct(@PathVariable("productId") int productId) {
-		productService.delete(productService.getProduct(productId));
-	}
 	
 	@PostMapping("/placeOrder")
 	public String createOrder(HttpSession session, Authentication authentication , @ModelAttribute Person person) {
